@@ -155,12 +155,12 @@
       })      
       
       // Define o que acontecerá após o botão "Parar" ser clicado
-      stopButton.addEventListener('click', function() {
+      stopButton.addEventListener('click touchstart', function() {
         mediaRecorder.stop();
       });
 
       // Define o que acontecerá após o botão "Gravar" ser clicado
-      recButton.addEventListener('click', function() {
+      recButton.addEventListener('click touchstart', function() {
         document.getElementById("cough-prediction").innerHTML = ""; // limpa o campo de texto da "tosse"
         document.getElementById("covid-prediction").innerHTML = ""; // limpa o campo de texto da "covid"
         recordedChunks.length = 0; // limpa o áudio anterior
