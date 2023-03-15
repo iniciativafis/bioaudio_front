@@ -155,12 +155,16 @@
       })      
       
       // Define o que acontecerá após o botão "Parar" ser clicado
-      stopButton.addEventListener('click', function() {
+      function handleStopInteraction(evt) {
+        evt.preventDefault()
         mediaRecorder.stop();
-      });
+      }      
+      stopButton.addEventListener('click', handleStopInteraction);
+      stopButton.addEventListener('touchstart', handleStopInteraction);
 
       // Define o que acontecerá após o botão "Gravar" ser clicado
-      recButton.addEventListener('click', function() {
+      function handleRecInteraction(evt){
+        evt.preventDefault()
         document.getElementById("cough-prediction").innerHTML = ""; // limpa o campo de texto da "tosse"
         document.getElementById("covid-prediction").innerHTML = ""; // limpa o campo de texto da "covid"
         recordedChunks.length = 0; // limpa o áudio anterior
@@ -168,7 +172,10 @@
         setTimeout(function() {
             mediaRecorder.stop();
         }, 4500); // Grava por 4,5 segundos (em milissegundos) e depois interrompe automaticamente
-      });
+      }      
+      recButton.addEventListener('click', handleRecInteraction);
+      recButton.addEventListener('touchstart', handleRecInteraction);
+
     };
 
     // Solicita permissão do usuário para acesso ao microfone
